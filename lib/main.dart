@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:roadmap/widget_tree.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(); //Both lines required for the application to work
   runApp(MyApp());
 }
 
@@ -10,12 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.grey,
-          title: const Text('Flutter is fun!'),
-        ),
-      ),
+      home: const WidgetTree(),
     );
   }
 }
